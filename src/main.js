@@ -2,6 +2,7 @@ const $siteList = $('.siteList')
 const $lastLi = $siteList.find('li.last')
 const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
+    //字符串变回对象
 const hashMap = xObject || [
     { logo: 'A', url: 'https://www.acfun.cn' },
     { logo: 'B', url: 'https://www.bilibili.com' },
@@ -11,7 +12,7 @@ const simplifyUrl = (url) => {
     return url.replace('https://', '')
         .replace('http://', '')
         .replace('www.', '')
-        .replace(/\/.*/, '')
+        .replace(/\/.*/, '') //删除/开头的后面内容
 }
 const render = () => {
     $siteList.find('li:not(.last)').remove()
@@ -28,7 +29,7 @@ const render = () => {
             window.open(node.url)
         })
         $li.on('click', '.close', (e) => {
-            e.stopPropagation()
+            e.stopPropagation() //阻止冒泡
             hashMap.splice(index, 1)
             render()
         })
@@ -57,6 +58,7 @@ window.onbeforeunload = () => {
 
 $(document).on('keypress', (e) => {
     const { key } = e
+    console.log(e)
     for (let i = 0; i < hashMap.length; i++) {
         if (hashMap[i].logo.toLowerCase() === key) {
             window.open(hashMap[i].url)

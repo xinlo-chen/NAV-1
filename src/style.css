@@ -120,6 +120,10 @@ body {
     cursor: pointer;
 }
 
+.siteList .site:hover {
+    background: burlywood;
+}
+
 .siteList .site>.logo {
     width: 64px;
     height: 64px;
@@ -145,6 +149,7 @@ body {
 
 .siteList .site:hover>.close {
     display: block;
+    background-color: red;
 }
 
 .siteList .addButton {
@@ -156,6 +161,10 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 20px 0;
+}
+
+.siteList .addButton:hover {
+    background: burlywood;
 }
 
 .siteList .addButton .icon {

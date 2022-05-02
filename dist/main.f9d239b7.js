@@ -121,7 +121,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var $siteList = $('.siteList');
 var $lastLi = $siteList.find('li.last');
 var x = localStorage.getItem('x');
-var xObject = JSON.parse(x);
+var xObject = JSON.parse(x); //字符串变回对象
+
 var hashMap = xObject || [{
   logo: 'A',
   url: 'https://www.acfun.cn'
@@ -131,7 +132,7 @@ var hashMap = xObject || [{
 }];
 
 var simplifyUrl = function simplifyUrl(url) {
-  return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/.*/, '');
+  return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\/.*/, ''); //删除/开头的后面内容
 };
 
 var render = function render() {
@@ -142,7 +143,8 @@ var render = function render() {
       window.open(node.url);
     });
     $li.on('click', '.close', function (e) {
-      e.stopPropagation();
+      e.stopPropagation(); //阻止冒泡
+
       hashMap.splice(index, 1);
       render();
     });
@@ -173,6 +175,7 @@ window.onbeforeunload = function () {
 
 $(document).on('keypress', function (e) {
   var key = e.key;
+  console.log(e);
 
   for (var i = 0; i < hashMap.length; i++) {
     if (hashMap[i].logo.toLowerCase() === key) {
@@ -181,4 +184,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.bea6b3cb.js.map
+//# sourceMappingURL=main.f9d239b7.js.map
