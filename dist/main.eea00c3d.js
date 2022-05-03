@@ -129,6 +129,18 @@ var hashMap = xObject || [{
 }, {
   logo: 'B',
   url: 'https://www.bilibili.com'
+}, {
+  logo: 'D',
+  url: 'https://dmzj.com'
+}, {
+  logo: 'M',
+  url: 'https://www.missevan.com'
+}, {
+  logo: 'P',
+  url: 'https://www.pixiv.net'
+}, {
+  logo: 'U',
+  url: 'https://www.u17.com'
 }];
 
 var simplifyUrl = function simplifyUrl(url) {
@@ -138,7 +150,7 @@ var simplifyUrl = function simplifyUrl(url) {
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n                <div class=\"site\">\n                    <div class=\"logo\">".concat(node.logo, "</div>\n                    <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n                    <div class=\"close\"><svg class=\"icon\">\n                    <use xlink:href=\"#icon-close\"></use></svg></div>\n                </div>\n         </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n                    <div class=\"site\">\n                        <div class=\"logo\">".concat(node.logo, "</div>\n                        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n                        <div class=\"close\"><svg class=\"icon\">\n                        <use xlink:href=\"#icon-close\"></use></svg></div>\n                    </div>\n             </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -174,14 +186,19 @@ window.onbeforeunload = function () {
 };
 
 $(document).on('keypress', function (e) {
-  var key = e.key;
-  console.log(e);
+  var focus = document.getElementById('input');
 
-  for (var i = 0; i < hashMap.length; i++) {
-    if (hashMap[i].logo.toLowerCase() === key) {
-      window.open(hashMap[i].url);
+  if (focus === document.activeElement) {
+    console.log('hi');
+  } else {
+    var key = e.key;
+
+    for (var i = 0; i < hashMap.length; i++) {
+      if (hashMap[i].logo.toLowerCase() === key) {
+        window.open(hashMap[i].url, "_self");
+      }
     }
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.f9d239b7.js.map
+//# sourceMappingURL=main.eea00c3d.js.map

@@ -6,6 +6,10 @@ const xObject = JSON.parse(x)
 const hashMap = xObject || [
     { logo: 'A', url: 'https://www.acfun.cn' },
     { logo: 'B', url: 'https://www.bilibili.com' },
+    { logo: 'D', url: 'https://dmzj.com' },
+    { logo: 'M', url: 'https://www.missevan.com' },
+    { logo: 'P', url: 'https://www.pixiv.net' },
+    { logo: 'U', url: 'https://www.u17.com' },
 ]
 
 const simplifyUrl = (url) => {
@@ -18,13 +22,13 @@ const render = () => {
     $siteList.find('li:not(.last)').remove()
     hashMap.forEach((node, index) => {
         const $li = $(`<li>
-                <div class="site">
-                    <div class="logo">${node.logo}</div>
-                    <div class="link">${simplifyUrl(node.url)}</div>
-                    <div class="close"><svg class="icon">
-                    <use xlink:href="#icon-close"></use></svg></div>
-                </div>
-         </li>`).insertBefore($lastLi);
+                    <div class="site">
+                        <div class="logo">${node.logo}</div>
+                        <div class="link">${simplifyUrl(node.url)}</div>
+                        <div class="close"><svg class="icon">
+                        <use xlink:href="#icon-close"></use></svg></div>
+                    </div>
+             </li>`).insertBefore($lastLi);
         $li.on('click', () => {
             window.open(node.url)
         })
@@ -57,11 +61,16 @@ window.onbeforeunload = () => {
 }
 
 $(document).on('keypress', (e) => {
-    const { key } = e
-    console.log(e)
-    for (let i = 0; i < hashMap.length; i++) {
-        if (hashMap[i].logo.toLowerCase() === key) {
-            window.open(hashMap[i].url)
+    const focus = document.getElementById('input');
+    if (focus === document.activeElement) {
+        console.log('hi')
+    } else {
+        const { key } = e
+        for (let i = 0; i < hashMap.length; i++) {
+            if (hashMap[i].logo.toLowerCase() === key) {
+                window.open(hashMap[i].url, "_self")
+            }
         }
     }
+
 })
