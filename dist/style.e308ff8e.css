@@ -108,7 +108,6 @@
     }
     
     .siteList .site>.close {
-        border: 1px solid #000;
         position: absolute;
         right: 10px;
         top: 5px;
