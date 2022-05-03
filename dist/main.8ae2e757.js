@@ -120,10 +120,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"epB2":[function(require,module,exports) {
 var $siteList = $('.siteList');
 var $lastLi = $siteList.find('li.last');
-var x = localStorage.getItem('x');
-var xObject = JSON.parse(x); //字符串变回对象
+var y = localStorage.getItem('y');
+var yObject = JSON.parse(y); //字符串变回对象
 
-var hashMap = xObject || [{
+var hashMap = yObject || [{
   logo: 'A',
   url: 'https://www.acfun.cn'
 }, {
@@ -150,7 +150,7 @@ var simplifyUrl = function simplifyUrl(url) {
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n                    <div class=\"site\">\n                        <div class=\"logo\">".concat(node.logo, "</div>\n                        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n                        <div class=\"close\"><svg class=\"icon\">\n                        <use xlink:href=\"#icon-close\"></use></svg></div>\n                    </div>\n             </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n                    <div class=\"site\">\n                        <div class=\"logo\">".concat(node.logo, "</div>\n                        <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n                        <div class=\"close\"><svg class=\"icon\">\n                        <use ylink:href=\"#icon-close\"></use></svg></div>\n                    </div>\n             </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -182,7 +182,7 @@ $('.addButton').on('click', function () {
 
 window.onbeforeunload = function () {
   var string = JSON.stringify(hashMap);
-  localStorage.setItem('x', string);
+  localStorage.setItem('y', string);
 };
 
 $(document).on('keypress', function (e) {
@@ -201,4 +201,4 @@ $(document).on('keypress', function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.eea00c3d.js.map
+//# sourceMappingURL=main.8ae2e757.js.map
