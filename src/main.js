@@ -1,9 +1,9 @@
 const $siteList = $('.siteList')
 const $lastLi = $siteList.find('li.last')
-const y = localStorage.getItem('y')
-const yObject = JSON.parse(y)
+const x = localStorage.getItem('x')
+const xObject = JSON.parse(x)
     //字符串变回对象
-const hashMap = yObject || [
+const hashMap = xObject || [
     { logo: 'A', url: 'https://www.acfun.cn' },
     { logo: 'B', url: 'https://www.bilibili.com' },
     { logo: 'D', url: 'https://dmzj.com' },
@@ -26,7 +26,7 @@ const render = () => {
                         <div class="logo">${node.logo}</div>
                         <div class="link">${simplifyUrl(node.url)}</div>
                         <div class="close"><svg class="icon">
-                        <use ylink:href="#icon-close"></use></svg></div>
+                        <use xlink:href="#icon-close"></use></svg></div>
                     </div>
              </li>`).insertBefore($lastLi);
         $li.on('click', () => {
@@ -57,7 +57,7 @@ $('.addButton').on('click', () => {
 
 window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap)
-    localStorage.setItem('y', string)
+    localStorage.setItem('x', string)
 }
 
 $(document).on('keypress', (e) => {
